@@ -4,27 +4,25 @@ void Calculate(string expression)
 {
     List<string> orderOfMathOperations = new List<string>();
 
-    calculator.SettingFalseOrder.SetList(orderOfMathOperations, expression);
-
-    calculator.SortingAlgorithm.Sort(orderOfMathOperations);
-
-    Console.WriteLine("Posortowane");
-    for (int i = 0; i < orderOfMathOperations.Count; i++)
+    int s = 1;
+    do
     {
-        Console.WriteLine(orderOfMathOperations[i]);
-    }
+        orderOfMathOperations.Clear();
 
-    Console.WriteLine("Step - 1");
-    calculator.EquationSolver.Solve(orderOfMathOperations, ref expression);
-
-    int s = 2;
-    while (orderOfMathOperations.Count != 0)
-    {
         calculator.SettingFalseOrder.SetList(orderOfMathOperations, expression);
-        Console.WriteLine("Step - " + s);
+        calculator.SortingAlgorithm.Sort(orderOfMathOperations);
+
+        //Console.WriteLine("Posortowana lista - " + s);
+        //for (int i = 0; i < orderOfMathOperations.Count; i++)
+        //{
+        //    Console.WriteLine(orderOfMathOperations[i]);
+        //}
+
+        //Console.WriteLine("Krok - " + s);
         calculator.EquationSolver.Solve(orderOfMathOperations, ref expression);
         s++;
-    }
+
+    } while (orderOfMathOperations.Count != 0);
 }
 
 void MathOperation()

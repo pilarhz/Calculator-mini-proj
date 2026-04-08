@@ -52,7 +52,7 @@
             char operation = order[0][1];
             double? result = null;
 
-            Console.WriteLine("Before calc A:" + numberA + "| B:" + numberB);
+            //Console.WriteLine("Before calc A:" + numberA + "| B:" + numberB);
 
             switch (operation)
             {
@@ -70,17 +70,17 @@
                     break;
             }
 
-            //Console.WriteLine(result);
-
             equation = equation.Remove(endLeft, endRight - endLeft + 1);
 
             equation = equation.Insert(endLeft, Convert.ToString(result));
 
-            Console.WriteLine(order[0] + " | " + numberA + operation + numberB);
+            //Console.WriteLine("Obliczenia: " + order[0] + " | " + numberA + operation + numberB);
             order.RemoveAt(0);
-
-            //Console.WriteLine(order[0]);
-            Console.WriteLine("Result = " + equation);
+            
+            if (order.Count == 0)
+            {
+                Console.WriteLine("Result = " + equation);
+            }
         }
     }
 }
