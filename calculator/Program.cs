@@ -1,4 +1,6 @@
-﻿bool AppRunning = true;
+﻿using calculator;
+
+bool AppRunning = true;
 
 void Calculate(string expression)
 {
@@ -35,11 +37,18 @@ void MathOperation()
 
     if (operation != null)
     {
-        Calculate(operation);
+        if (CheckEquation.CheckIfEquationIsCorrecct(operation))
+        {
+            Calculate(operation);
+        }
+        else
+        {
+            Console.WriteLine("There is something wrong with the equation");
+        }
     }
     else
     {
-        Console.WriteLine("Null equation");
+        Console.WriteLine("Equation is null");
     }
 
     Console.WriteLine();
